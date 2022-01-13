@@ -1,0 +1,37 @@
+@import "./header.css";
+@import "./button.css";
+@import "./menu.css";
+@import "./principal.css";
+@import "./producto.css";
+@import "./footer.css";
+@import "./sesion.css";
+@import "./form.css";
+@import "./cotizacion.css";
+@import "./portal.css";
+@import "./automovil.css";
+
+:root{
+  --fontbase: 'Poppins', sans-serif;
+  --headline1: bold 95px/153.71px var(--fontbase);
+  --headline2: bold 59px/95.46px var(--fontbase);
+  --headline3: bold 48px/77px var(--fontbase);
+  --headline4: bold 34px/55px var(--fontbase);
+  --headline5: bold 24px/38px var(--fontbase);
+  --body1: 16px/25px var(--fontbase);
+  --body2: 14px/22px var(--fontbase);
+  --button: bold 14px/22px var(--fontbase);
+  --caption: 12px/19px var(--fontbase);
+  --gradient: radial-gradient(41.48% 11.48% at 2.38% 8.52%, #D7D9E9 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(135deg, #A2C8DD 0%, #0D2A68 77.08%);
+  --gray: #a8acb4;
+  --blue2: #0573da;
+  --white: white;
+  --blue: rgb(4, 82, 155);
+}
+
+body{
+  background: var(--white);
+  min-block-size: 100vh;
+  font: var(--body1);
+  color: var(--purple);
+  margin: 0;
+}

@@ -1,0 +1,14 @@
+.button {
+    background: var(--blue2);
+    font: var(--button);
+    color: var(--white);
+    padding-inline-start: 24px;
+    padding-inline-end: 24px;
+    padding-block-start: 13px;
+    padding-block-end: 13px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+}

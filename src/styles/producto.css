@@ -1,0 +1,38 @@
+.producto{
+    width: 350px;
+    height: 300px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    margin-inline-start: 5px;
+    margin-inline-end: 5px;
+}
+
+.banner-producto{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-block-start: 5px;
+}
+
+.banner-producto img {
+    width: 350px;
+    height: 150px;
+}
+
+.title-banner h5{
+    font: var(--button);
+    margin: 0;
+}
+
+.description-product{
+    font: var(--body2);
+}
+
+.link-product a{
+    text-decoration: none;
+    color: var(--blue);
+}

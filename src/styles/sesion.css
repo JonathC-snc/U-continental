@@ -1,0 +1,42 @@
+.session{
+    width: 100%;
+    height: 76vh;
+    background: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-sesion{
+    width: 55%;
+    height: 40vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 2px solid #858c94;
+}
+
+.title-sesion{
+    width: 100%;
+    height: 60px;
+    background: var(--blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+}
+
+.title-sesion h4{
+    padding-inline-start: 10px;
+}
+
+.button-sesion{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-block-end: 30px;
+}
+
+.button-sesion a{
+    text-decoration: none;
+    color: black;
+}
