@@ -6,8 +6,9 @@ import Principal from "./components/principal";
 import Automovil from "./components/automovil.jsx";
 import Registro from "./components/cotizacion";
 import Portal from "./components/portal";
-import Menu from "./components/menu";
+// import Menu from "./components/menu";
 import Sesion from "./components/sesion";
+import Cotizacion from "./components/cotizacion";
 import Poliza from "./components/poliza";
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
             <Route path="/automovil" element={<Automovil />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/portal" element={<Portal />} />
-            <Route path="/menu" element={<Menu />} />
+            {/* <Route path="/menu" element={<Menu />} /> */}
             <Route path="/sesion" element={<Sesion />} />
+            <Route path="/cotizacion" element={<Cotizacion />} />
             <Route path="/poliza" element={<Poliza />} />
           </Routes>
       </div>
