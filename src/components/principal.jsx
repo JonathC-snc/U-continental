@@ -39,7 +39,9 @@ const Principal = () => (
             <div className="productos">
                 <div className="seccion-circle">
                     <div className="circle">
-                        <i className="fas fa-car icon"></i>
+                        <a href={"./automovil"}>
+                            <i className="fas fa-car icon"></i>
+                        </a>
                     </div>
                     <p>Automoviles</p>
                 </div>

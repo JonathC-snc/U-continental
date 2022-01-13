@@ -54,7 +54,9 @@ export default function Automovil() {
                 </div>
                 <div className="cotizar">
                     <h4>Cotiza sin Compromiso</h4>
-                    <button className="button">Cotizar</button>
+                    <a href={"./poliza"} className="button">
+                        Cotizar
+                    </a>
                 </div>
             </div>
             <div>

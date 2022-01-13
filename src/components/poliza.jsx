@@ -14,7 +14,7 @@ export default function Poliza () {
                     <img src={banner} alt="" />
                 </div>
                 <div className='form-poliza'>
-                    <h4>Cotizacion de poliza de vida</h4>
+                    <h4>Cotizacion de poliza</h4>
                     <div className='formulario'>
                         <form action="" className='list'>
                             <div className='form-content'>
