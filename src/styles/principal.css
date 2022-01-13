@@ -61,6 +61,14 @@
     height: 100px;
     background: var(--blue);
     border-radius: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon{
+    font-size: 3rem;
+    color: var(--white);
 }
 
 .seccion-2{

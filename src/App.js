@@ -8,6 +8,7 @@ import Registro from "./components/cotizacion";
 import Portal from "./components/portal";
 import Menu from "./components/menu";
 import Sesion from "./components/sesion";
+import Poliza from "./components/poliza";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/portal" element={<Portal />} />
             <Route path="/menu" element={<Menu />} />
-            <Route path="/Sesion" element={<Sesion />} />
+            <Route path="/sesion" element={<Sesion />} />
+            <Route path="/poliza" element={<Poliza />} />
           </Routes>
       </div>
     </BrowserRouter>

@@ -47,6 +47,7 @@ const Cotizacion = () => (
                 <div className="form-content">
                     <label htmlFor="">Ciudad</label>
                     <select name="" id="">
+                        <option value="">Seleccionar</option>
                         <option value="caracas">Caracas</option>
                         <option value="valencia">Valencia</option>
                     </select>

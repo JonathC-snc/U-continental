@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
+import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
+import '../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css';
+import '../node_modules/@fortawesome/fontawesome-free/css/solid.css';
+import '../node_modules/@fortawesome/fontawesome-free/css/brands.css';
+import "../node_modules/@fortawesome/fontawesome-free/js/brands";
+import "../node_modules/@fortawesome/fontawesome-free/js/solid";
+import "../node_modules/@fortawesome/fontawesome-free/js/fontawesome";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

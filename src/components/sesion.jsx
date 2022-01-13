@@ -12,7 +12,7 @@ const Sesion = () => (
                     <div className="title-sesion">
                         <h4>Inicio de Sesion</h4>
                     </div>
-                    <div className="form-content">
+                    <div className="form-content-3">
                         <label htmlFor="">Correo</label>
                         <input type="text" placeholder="Correo.." />
                         <label htmlFor="">Contraseña</label>
@@ -20,7 +20,11 @@ const Sesion = () => (
                         
                     </div>
                     <div className="button-sesion">
-                        <a href="">Olvidó su clave?</a>
+                        <div className="button-sesion-opciones">
+                            <a href={"#"}>Olvidó su clave?</a>
+                            <a href={"./registro"}>Crear Cuenta</a>
+                        </div>
+                        
                         <button type="submit" className="button">Ingresar</button>
                     </div>
                 </form>

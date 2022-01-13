@@ -9,6 +9,8 @@
 @import "./cotizacion.css";
 @import "./portal.css";
 @import "./automovil.css";
+@import "./icon.css";
+@import "./poliza.css";
 
 :root{
   --fontbase: 'Poppins', sans-serif;

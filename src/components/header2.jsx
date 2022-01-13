@@ -6,7 +6,7 @@ class Headers extends Component{
         return(
             <div>
                 <div className="header">
-                    <a href="#">
+                    <a href={"./"}>
                         <div className="title">
                             <img className="logo-aseguradora" src={logo} alt="logo" />
                             <h4>Ucab Continental</h4>

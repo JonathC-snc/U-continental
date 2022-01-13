@@ -8,23 +8,23 @@
 }
 
 .pie-pagina{
-    width: 50%;
+    width: 85%;
     padding-inline-start: 50px;
     font: var(--body1);
     color: var(--white);
 }
 
 .redes {
-    width: 50%;
+    width: 15%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     align-items: center;
     padding-inline-end: 20px;
     font: var(--body1);
     color: var(--white);
 }
 
-.redes img {
-    width: 30px;
-    height: 30px;
+.redes i {
+    margin-inline-start: 1px;
+    margin-inline-end: 1px;
 }

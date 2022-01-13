@@ -36,6 +36,11 @@
     padding-block-end: 30px;
 }
 
+.button-sesion-opciones{
+    display: flex;
+    flex-direction: column;
+}
+
 .button-sesion a{
     text-decoration: none;
     color: black;

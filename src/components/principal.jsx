@@ -13,13 +13,13 @@ const productos = [
     },
     {
         "id": 2,
-        "image": "../assets/img/oficinaseguro.jpg",
+        'image': '../img/oficinaseguro.jpg',
         "title": "Sedes",
         "description": "Encuentra la oficina mas cerca a tu hogar"
     },
     {
         "id": 3,
-        "image": "../assets/img/sociosseguro.jpg",
+        'image': "../assets/img/sociosseguro.jpg",
         "title": "Socios",
         "description": "Más de 111 socios exclusivos de Ucab Continental"
     }
@@ -38,19 +38,27 @@ const Principal = () => (
             <h5>Nuestros Productos</h5>
             <div className="productos">
                 <div className="seccion-circle">
-                    <div className="circle"></div>
+                    <div className="circle">
+                        <i className="fas fa-car icon"></i>
+                    </div>
                     <p>Automoviles</p>
                 </div>
                 <div className="seccion-circle">
-                    <div className="circle"></div>
+                    <div className="circle">
+                        <i className="fas fa-heartbeat icon"></i>
+                    </div>
                     <p>Vidas</p>
                 </div>
                 <div className="seccion-circle">
-                    <div className="circle"></div>
+                    <div className="circle">
+                        <i className="fas fa-exclamation icon"></i>
+                    </div>
                     <p>Accidentes</p>
                 </div>
                 <div className="seccion-circle">
-                    <div className="circle"></div>
+                    <div className="circle">
+                        <i className="fas fa-home icon"></i>
+                    </div>
                     <p>Hogar</p>
                 </div> 
             </div>
