@@ -1,6 +1,7 @@
 import * as React from "react"
 import Header from "./header2"
 import logo from "../assets/img/logo.svg"
+import Item from "./item_poliza"
 
 export default function Portal() {
     return(
@@ -28,7 +29,8 @@ export default function Portal() {
                         </div>
                     </div>
                     <div className="table-portal">
-                        <h2>Tus Polizas apareceran aqui</h2>
+                        {/*<h2>Tus Polizas apareceran aqui</h2>*/}
+                        <Item />
                     </div>
                 </div>
             </div>

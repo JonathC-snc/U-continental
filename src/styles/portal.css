@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 500px;
+    height: auto;
+    margin-block-end: 50px;
 }
 
 .menu-portal{
@@ -40,7 +41,7 @@
 
 .portal-sec{
     width: 70%;
-    height: 60vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin-block-start: 50px;
@@ -52,26 +53,38 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 25%;
+    height: auto;
     margin-block-end: 2.5%;
     border: 1px solid grey;
 }
 
 .title-portal{
-    padding-inline-start: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.title-portal h3,p {
+    margin-inline-start: 50px;
+    padding-block-start: 5px;
+    padding-block-end: 5px;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
 }
 
 .logo-portal{
     width: 10%;
-    height: 5vh;
+    height: auto;
     margin-block-start: 15px;
 }
 
 .table-portal{
-    width: 100%;
-    height: 65%;
+    height: auto;
     margin-block-start: 2.5%;
     border: 1px solid grey;
+    margin-block-end: 100px;
 }
 
 .table-portal h2{

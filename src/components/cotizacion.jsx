@@ -1,93 +1,68 @@
-import React from "react"
-import cotizacion from "../assets/img/cotizacion_images.gif"
-import Header2 from "./header2.jsx"
-import Footer from "./footer.jsx"
-import Principal from "./principal.jsx"
-import {useState, useEffect} from 'react'
+import React from 'react';
+import Header from './header2';
+import Footer from './footer';
+import banner from '../assets/img/cotizacion_images.gif';
+import { Link } from 'react-router-dom';
 
-export default function (){
-
-    const [user, setUser] = useState({
-        nombre_usuario: '',
-        email: '',
-        contrasena: '',
-        nombre: '',
-        apellido: '',
-        sexo: 'M',
-        id_ciudad: 1
-    });
-
-    const handleSubmit = async function(e){
-        e.preventDefault();
-        const res = await fetch('http://localhost:5000/createUser', {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: { "Content-Type": "application/json"}
-        });
-        const data = await res.json();
-    };
-
-    const handleChange = function(e){
-        setUser({...user, [e.target.name]: e.target.value});
-    };
-
+export default function cotizacion () {
     return (
         <div>
             <div>
-                <Header2 />
+                <Header />
             </div>
-            <div className="formulario">
-                <h2>Registro</h2>
-                <form onSubmit={handleSubmit} className="list" onChange={handleChange}>
-                    <div className="form-content">
-                        <label htmlFor="">Nombre Usuario</label>
-                        <input required id="usuario" type="text" name="nombre_usuario" placeholder="Usuario.."/>
+            <div className='box-poliza'>
+                <div className='banner-poliza'>
+                    <img src={banner} alt="" />
+                </div>
+                <div className='form-poliza'>
+                    <h4>Cotizacion de poliza</h4>
+                    <div className='formulario'>
+                        <form action="" className='list'>
+                            <div className='form-content'>
+                                <label htmlFor="">Cedula</label>
+                                <input type="text" placeholder='Cedula' />
+                            </div>
+                            <div className='form-content'>
+                                <label htmlFor="">Nombre</label>
+                                <input type="text" placeholder='Nombre' />
+                            </div>
+                            <div className='form-content'>
+                                <label htmlFor="">Numero Telefono</label>
+                                <input type="text" placeholder='Telefono' />
+                            </div>
+                            <div className='form-content'>
+                                <label htmlFor="">Tipo Persona</label>
+                                <select name="" id="">
+                                    <option value="">Seleccionar</option>
+                                    <option value="BENEFICIARIO">Beneficiario</option>
+                                    <option value="EMPLEADO">Empleado</option>
+                                    <option value="AGENTE">Agente</option>
+                                    <option value="CLIENTE">Cliente</option>
+                                </select>
+                            </div>
+                            <div className='form-content'>
+                                <label htmlFor="">Tipo de Poliza</label>
+                                <select name="" id="">
+                                    <option value="">Seleccionar</option>
+                                    <option value="">Vida</option>
+                                    <option value="">Hogar</option>
+                                    <option value="">Vehiculo</option>
+                                </select>
+                            </div>
+                            <div className='form-content btn-poliza'>
+                                <Link  to={"/cotizacion/:id"}>
+                                    <button type='submit' className='button'>Enviar</button>
+                                </Link>
+                            </div>
+                        </form>
                     </div>
-                    <div className="form-content">
-                        <label htmlFor="">Correo</label>
-                        <input type="email" name="email" placeholder="Correo.."/>
-                    </div>
-                    <div className="form-content">
-                        <label htmlFor="">Contraseña</label>
-                        <input type="password" name="contrasena" placeholder="Contraseña.."/>
-                    </div>
-                    <div className="form-content">
-                        <label htmlFor="">Nombre</label>
-                        <input type="text" name="nombre" placeholder="Nombre" />
-                    </div>
-                    <div className="form-content">
-                        <label htmlFor="">Apellido</label>
-                        <input type="text" name="apellido" placeholder="Apellido" />
-                    </div> 
-                    <div className="form-content"> 
-                        <label htmlFor="">Edad</label>
-                        <input type="text" name="edad" placeholder="Edad" />
-                    </div>
-                    <div className="form-content">
-                        <label htmlFor="">Sexo</label>
-                        <select id="" >
-                            <option name="sexo" value="M" selected>M</option>
-                            <option name="sexo" value="F">F</option>
-                            <option name="sexo" value="N/A">N/A</option>
-                        </select>
-                    </div>
-                    <div className="form-content">
-                        <label htmlFor="ciudad">Ciudad</label>
-                        <select id="ciudad" name="id_ciudad">
-                            <option value="caracas">Caracas</option>
-                            <option value="valencia">Valencia</option>
-                        </select>
-                    </div>
-                    <div className="form-content-2">
-                        <a href={Principal}>
-                            <button type="submit" className="button">Registrar</button>
-                        </a>
-                    </div>
-                </form>
+                </div>
+
             </div>
             <div>
                 <Footer />
             </div>
         </div>
     );
+
 }

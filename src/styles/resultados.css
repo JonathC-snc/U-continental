@@ -1,0 +1,95 @@
+.resultado{
+    width: 100%;
+    height: auto;
+    margin-block-end: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.panel-resultado{
+    width: 80%;
+    height: auto;
+    background: rgb(224, 224, 224);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 30px;
+}
+
+.title-resultado{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    
+}
+
+.title-resultado h2,h3{
+    margin-inline-start: 50px;
+}
+
+.panel-resultado h2{
+    margin-inline-start: 100px;
+}
+
+.panel-resultado h4{
+    margin-inline-start: 50%;
+    margin-inline-end: 50%;
+}
+
+.datos-resultado{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.box-r{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: start;
+    
+}
+
+.box-r p{
+    margin-inline-start: 100px;
+}
+
+.box-r h5{
+    text-align: end;
+    margin-inline-end: 100px;
+}
+
+.box2-r{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-resultado{
+    margin-block-start: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.button-resultado span{
+    font-weight: bold;
+} 
+
+.button-resultado button{
+    background: var(--blue);
+}
+
+.btn-r{
+    display: flex;
+    justify-content: space-between;
+}
+

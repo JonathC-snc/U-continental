@@ -28,6 +28,17 @@
     height: 250px;
 }
 
+.seccion-3{
+    width: 100%;
+    height: 80px;
+}
+
+.seccion-3 h1{
+    display: flex;
+    justify-content: flex-start;
+    margin-inline-start: 50px;
+}
+
 .seccion-1 h5 {
     display: flex;
     justify-content: flex-start;

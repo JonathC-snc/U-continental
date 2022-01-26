@@ -25,7 +25,7 @@ export default function Header(){
                                 <a href="#">Seguros</a>
                             </li>
                             <li>
-                                <a href="#">Servicios</a>
+                                <a href={'/servicio'}>Servicios</a>
                             </li>
                             <li>
                                 <a href="#">Sobre Nosotros</a>

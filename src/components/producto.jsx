@@ -1,8 +1,11 @@
 import React from "react"
+import { Link } from "react-router-dom"
 //import pago from "../assets/img/tarjetaseguro.jpg"
 import PropTypes from  'prop-types'
 
-const producto = ({image, title, description}) => (
+
+
+const producto = ({image, title, description, id}) => (
     <div className="producto">
         <div className="banner-producto">
             <img src={image} alt="" />
@@ -14,7 +17,7 @@ const producto = ({image, title, description}) => (
             <p>{description}</p>
         </div>
         <div className="link-product">
-            <a href="#">Ver más</a>
+            <Link to={`/servicio/${id}`}>Ver más</Link>
         </div>
     </div>
 )

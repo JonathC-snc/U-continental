@@ -1,29 +1,31 @@
 import React from "react"
 import Producto from "./producto.jsx"
 import Footer from "./footer.jsx"
-import tarjeta from "../assets/img/tarjetaseguro.jpg"
 import Header from "./header"
+import { Link } from "react-router-dom"
 
 const productos = [
     {
         "id": 1,
-        "image": {tarjeta},
+        "image": 'tarjetaseguro.jpg',
         "title": "Opciones de pago",
         "description": "para tu comodidad hemos desarrollado diferentes formas de pagar tus polizas"
     },
     {
         "id": 2,
-        'image': '../img/oficinaseguro.jpg',
+        'image': 'oficinaseguro.jpg',
         "title": "Sedes",
         "description": "Encuentra la oficina mas cerca a tu hogar"
     },
     {
         "id": 3,
-        'image': "../assets/img/sociosseguro.jpg",
+        'image': 'sociosseguro.jpg',
         "title": "Socios",
         "description": "Más de 111 socios exclusivos de Ucab Continental"
     }
 ]
+
+const loadImage = require.context('../assets/img/', true);
 
 const Principal = () => (
     <div className="principal">
@@ -39,15 +41,17 @@ const Principal = () => (
             <div className="productos">
                 <div className="seccion-circle">
                     <div className="circle">
-                        <a href={"./automovil"}>
+                        <Link to={'/servicio/1'}>
                             <i className="fas fa-car icon"></i>
-                        </a>
+                        </Link>
                     </div>
                     <p>Automoviles</p>
                 </div>
                 <div className="seccion-circle">
                     <div className="circle">
-                        <i className="fas fa-heartbeat icon"></i>
+                        <a href={"./servicios"}>
+                            <i className="fas fa-heartbeat icon"></i>
+                        </a>
                     </div>
                     <p>Vidas</p>
                 </div>
@@ -59,7 +63,9 @@ const Principal = () => (
                 </div>
                 <div className="seccion-circle">
                     <div className="circle">
-                        <i className="fas fa-home icon"></i>
+                        <a href={"./servicios"}>
+                            <i className="fas fa-home icon"></i>
+                        </a>
                     </div>
                     <p>Hogar</p>
                 </div> 
@@ -70,7 +76,7 @@ const Principal = () => (
                 <Producto 
                     key={c.id}
                     id={c.id}
-                    image={c.image}
+                    image={loadImage(`./${c.image}`)}
                     title={c.title}
                     description={c.description}
                 />

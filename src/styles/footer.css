@@ -1,6 +1,6 @@
 .footer-page{
     width: 100%;
-    height: 60px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +9,7 @@
 
 .pie-pagina{
     width: 85%;
-    padding-inline-start: 50px;
+    text-align: start;
     font: var(--body1);
     color: var(--white);
 }
