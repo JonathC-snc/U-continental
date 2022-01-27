@@ -51,7 +51,7 @@ const cotizacion_resultado = () => {
                         <Link to={"/poliza"}>
                             <button className='button'>Atras</button>
                         </Link>
-                        <Link to={"/transaccion"}>
+                        <Link to={"/contrato"}>
                             <button className='button'>Aceptar</button>
                         </Link>
                     </div>

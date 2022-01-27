@@ -12,6 +12,7 @@ import Error404 from "./components/error_404";
 import Sesion from "./components/sesion";
 import Cotizacion from "./components/cotizacion";
 import Resultado from "./components/cotizacion_resultado";
+import Contrato from "./components/contrato";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/portal" element={<Portal />} />
             <Route path="/sesion" element={<Sesion />} />
             <Route path="/registro" element={<Registro />} />
+            <Route path="/contrato" element={<Contrato />} />
             <Route path="/cotizacion/:id" element={<Resultado />}/>
             <Route path="/cotizacion" element={<Cotizacion />} />
             <Route path="*" element={<Error404 />}/>
