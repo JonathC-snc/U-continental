@@ -1,5 +1,6 @@
 import * as  React from "react";
 import logo from "../assets/img/logo.svg";
+import { Link } from "react-router-dom";
 
 
 export default function Header(){
@@ -12,9 +13,9 @@ export default function Header(){
                         <h4>Ucab Continental</h4>
                     </a>
                     <div className="btn-sec">
-                        <a href={"./sesion"} className="button">
+                        <Link to={'/sesion'} className="button">
                             Iniciar Sesion
-                        </a>
+                        </Link>
                         
                     </div>               
                 </div>
@@ -22,16 +23,16 @@ export default function Header(){
                     <nav>
                         <ul>
                             <li>
-                                <a href="#">Seguros</a>
+                                <a href="/">Seguros</a>
                             </li>
                             <li>
                                 <a href={'/servicio'}>Servicios</a>
                             </li>
                             <li>
-                                <a href="#">Sobre Nosotros</a>
+                                <a href="/">Sobre Nosotros</a>
                             </li>
                             <li>
-                                <a href="#">Contacto</a>
+                                <a href="/">Contacto</a>
                             </li>
                         </ul>
                     </nav>

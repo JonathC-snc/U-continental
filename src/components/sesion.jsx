@@ -21,8 +21,8 @@ const Sesion = () => (
                     </div>
                     <div className="button-sesion">
                         <div className="button-sesion-opciones">
-                            <a href={"#"}>Olvidó su clave?</a>
-                            <a href={"./cotizacion"}>Crear Cuenta</a>
+                            <a href={"./"}>Olvidó su clave?</a>
+                            <a href={"./registro"}>Crear Cuenta</a>
                         </div>
                         
                         <button type="submit" className="button">Ingresar</button>

@@ -8,7 +8,7 @@ const services = [
         "id": 1,
         "seccion": "Vehiculo",
         "titulo": "Seguros para Vehículo",
-        "lista": "Plan Basico",
+        "lista": "Plan a todo riesgo",
         "image": "chica_seguro",
         "description": "Protege tu inversion. Manten tu vehiculo cubierto con los completos Planes que la Poliza de Automovil de Ucab Continental tiene para ti. Elige el plan que mas a tus necesidades de proteccion: Todo Riesgo, etc y sientete tranquilo a la hora de pensar en la seguridad de tu vehiculo." 
     },
@@ -16,15 +16,15 @@ const services = [
         "id": 2,
         "seccion": "Vida",
         "titulo": "Seguros de Vida",
-        "lista": "Plan Basico",
+        "lista": "Plan Básico",
         "image": "tarjetaseguro",
-        "description": "Tus Beneficiarios merecen una proteccion cuando ya no estés, por ello, ponemos a tu disposicion nuestra poliza de vida, para que sigas protegiendo a los qué mas quieres aunque ya no estés" 
+        "description": "Tus Beneficiarios merecen una protección cuando ya no estés, por ello, ponemos a tu disposición nuestra póliza de vida, para que sigas protegiendo a los qué mas quieres aunque ya no estés" 
     },
     {
         "id": 3,
         "seccion": "Hogar",
         "titulo": "Seguros de Hogar",
-        "lista": "Plan Basico",
+        "lista": "Plan Hogar",
         "image": "oficinaseguro",
         "description": ""
     }
@@ -76,9 +76,9 @@ const Servicios = () => {
 
                                 <h2>Nuestros Productos</h2>
 
-                                <p>Plan Basico</p>
+                                <p>Plan Básico</p>
 
-                                <p>Plan Basico Especial</p>
+                                <p>Plan Básico Especial</p>
 
                                 <p>Plan Ahorro</p>
 
@@ -86,7 +86,7 @@ const Servicios = () => {
                             </div>
                         </div>
                         <div className="cotizar">
-                            <h4>Cotiza sin Compromiso</h4>
+                            <h4>Cotiza con Nosotros</h4>
                             <a href={"/poliza"} className="button">
                                 Cotizar
                             </a>

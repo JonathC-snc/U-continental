@@ -12,3 +12,23 @@
     width: 100%;
 
 }
+
+.box-contrato{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 75vh;
+}
+
+.center button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.center p{
+    margin: 0;
+}
+
