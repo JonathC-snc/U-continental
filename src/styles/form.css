@@ -47,7 +47,7 @@
 }
 
 
-.form-content input, select{
+.form-content input, select, textarea{
     border: 2px solid #858c94;
     margin-block-start: 8px;
     border-radius: 10px;
