@@ -20,7 +20,7 @@ export default function (){
 
     const handleSubmit = async function(e){
         e.preventDefault();
-        const res = await fetch('http://localhost:5000/createUser', {
+        const res = await fetch('http://localhost:5000/post-user', {
             method: 'POST',
             body: JSON.stringify(user),
             headers: { "Content-Type": "application/json"}
