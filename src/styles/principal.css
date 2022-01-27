@@ -67,6 +67,10 @@
     flex-direction: column;
 }
 
+.seccion-circle p{
+    margin: 0;
+}
+
 .circle{
     width: 100px;
     height: 100px;

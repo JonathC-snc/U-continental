@@ -78,6 +78,10 @@
     margin-block-end: 50px;
 }
 
+.formulario p{
+    margin: 0;
+}
+
 
 .list{
     width: 80%;

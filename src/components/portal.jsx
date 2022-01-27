@@ -4,6 +4,7 @@ import logo from "../assets/img/logo.svg"
 import Item from "./item_poliza"
 
 export default function Portal() {
+ 
     return(
         <div>
             <div>
@@ -14,9 +15,9 @@ export default function Portal() {
                     <h2 id="select">Portal</h2>
                     <h2>Mis Seguros</h2>
                     <h2>Solicitudes</h2>
-                    <h2>Cotizacion</h2>
+                    <h2>Cotización</h2>
                     <h2>Perfil</h2>
-                    <h2>Cerrar Sesion</h2>
+                    <h2>Cerrar Sesión</h2>
                 </div>
                 <div className="portal-sec">
                     <div className="title-box">
@@ -30,7 +31,7 @@ export default function Portal() {
                     </div>
                     <div className="table-portal">
                         {/*<h2>Tus Polizas apareceran aqui</h2>*/}
-                        <Item />
+                        <Item />    
                     </div>
                 </div>
             </div>

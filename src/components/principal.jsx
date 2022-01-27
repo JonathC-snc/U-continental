@@ -9,7 +9,7 @@ const productos = [
         "id": 1,
         "image": 'tarjetaseguro.jpg',
         "title": "Opciones de pago",
-        "description": "para tu comodidad hemos desarrollado diferentes formas de pagar tus polizas"
+        "description": "para tu comodidad hemos desarrollado diferentes formas de pagar tus pólizas"
     },
     {
         "id": 2,
@@ -49,9 +49,9 @@ const Principal = () => (
                 </div>
                 <div className="seccion-circle">
                     <div className="circle">
-                        <a href={"./servicios"}>
+                        <Link to={'/servicio/2'}>
                             <i className="fas fa-heartbeat icon"></i>
-                        </a>
+                        </Link>
                     </div>
                     <p>Vidas</p>
                 </div>
@@ -63,9 +63,9 @@ const Principal = () => (
                 </div>
                 <div className="seccion-circle">
                     <div className="circle">
-                        <a href={"./servicios"}>
+                        <Link to={'/servicio/3'}>
                             <i className="fas fa-home icon"></i>
-                        </a>
+                        </Link>
                     </div>
                     <p>Hogar</p>
                 </div> 

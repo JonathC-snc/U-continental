@@ -2,7 +2,7 @@ import React from "react"
 //import cotizacion from "../assets/img/cotizacion_images.gif"
 import Header2 from "./header2.jsx"
 import Footer from "./footer.jsx"
-import Principal from "./principal.jsx"
+import { Link } from "react-router-dom"
 import {useState} from 'react'
 
 export default function (){
@@ -39,6 +39,7 @@ export default function (){
             </div>
             <div className="formulario">
                 <h2>Registro</h2>
+                <p>Para continuar con la cotización rellena tus datos para el registro</p>
                 <form onSubmit={handleSubmit} className="list" onChange={handleChange}>
                     <div className="form-content">
                         <label htmlFor="">Nombre Usuario</label>
@@ -80,9 +81,9 @@ export default function (){
                         </select>
                     </div>
                     <div className="form-content-2">
-                        <a href={Principal}>
+                        <Link to={'/cotizacion'}>
                             <button type="submit" className="button">Registrar</button>
-                        </a>
+                        </Link>
                     </div>
                 </form>
             </div>
