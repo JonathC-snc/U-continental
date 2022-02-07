@@ -1,20 +1,20 @@
 import React from 'react'
 
-const Form_vida = () => {
+const Form_vida = ({handleVida}) => {
     return (
         <div className='box-formveh'>
             <div className='form-poliza'>
                 <div className='formulario'>
-                    <form action="" className='list'>
+                    <div action="" className='list'>
                         <div className='form-content'>
                             <label htmlFor="">Prima</label>
-                            <input type="text" placeholder='Matricula' />
+                            <input name="prima" onChange={handleVida} type="text" placeholder='Prima' />
                         </div>
                         <div className='form-content'>
                             <label htmlFor="">Cobertura</label>
-                            <input type="text" placeholder='Marca' />
+                            <input name="cobertura" onChange={handleVida} type="text" placeholder='Cobertura' />
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,38 @@
 import React from "react"
 import Header2 from "./header2.jsx"
 import Footer from "./footer.jsx"
+import {useState, useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 
-const Sesion = () => (
+const Sesion = () => {
+
+    const [usuario, setUsuario] = useState({
+        correo: 'jonacris2007@gmail.com',
+        password: 'cristo',
+    })
+
+    const [login, setLogin] = useState({
+        correo: '',
+        password: '',
+    })
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(login);
+        if((login.correo === usuario.correo) && (login.password === usuario.password)){
+            navigate('/portal')
+        }else{
+            alert('Error de sesion');
+        }
+    };
+
+    const handleChange = (e) => 
+        setLogin({ ...login, [e.target.name]: e.target.value});
+
+
+    return (
     <div>
         <div>
             <Header2 />
@@ -14,9 +44,9 @@ const Sesion = () => (
                     </div>
                     <div className="form-content-3">
                         <label htmlFor="">Correo</label>
-                        <input type="text" placeholder="Correo.." />
+                        <input name="correo" onChange={handleChange} type="text" placeholder="Correo.." />
                         <label htmlFor="">Contraseña</label>
-                        <input type="password" name="" id="" placeholder="Contraseña.." />
+                        <input name="password" onChange={handleChange} type="password" id="" placeholder="Contraseña.." />
                         
                     </div>
                     <div className="button-sesion">
@@ -25,7 +55,7 @@ const Sesion = () => (
                             <a href={"./registro"}>Crear Cuenta</a>
                         </div>
                         
-                        <button type="submit" className="button">Ingresar</button>
+                        <button onClick={handleSubmit} type="submit" className="button">Ingresar</button>
                     </div>
                 </form>
         </div>
@@ -33,6 +63,7 @@ const Sesion = () => (
             <Footer />
         </div>
     </div>
-)
+    );
+}
 
 export default Sesion

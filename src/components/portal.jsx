@@ -2,8 +2,28 @@ import * as React from "react"
 import Header from "./header2"
 import logo from "../assets/img/logo.svg"
 import Item from "./item_poliza"
+import { useNavigate } from "react-router-dom"
 
 export default function Portal() {
+
+    const navigate = useNavigate();
+
+    const handleExit = (e) => {
+        alert('Hasta Luego!');
+        navigate('/');
+    }
+
+    const handleSinister = (e) => {
+        navigate('/siniestro');
+    }
+
+    const handleCotizacion = (e) => {
+        navigate('/cotizacion');
+    }
+
+    const construccion = (e) => {
+        alert('Funcion No Habilitada');
+    }
  
     return(
         <div>
@@ -14,10 +34,10 @@ export default function Portal() {
                 <div className="menu-portal">
                     <h2 id="select">Portal</h2>
                     <h2>Mis Seguros</h2>
-                    <h2>Solicitudes</h2>
-                    <h2>Cotización</h2>
-                    <h2>Perfil</h2>
-                    <h2>Cerrar Sesión</h2>
+                    <h2 onClick={handleSinister}>Siniestros</h2>
+                    <h2 onClick={handleCotizacion}>Cotización</h2>
+                    <h2 onClick={construccion}>Perfil</h2>
+                    <h2 onClick={handleExit}>Salir</h2>
                 </div>
                 <div className="portal-sec">
                     <div className="title-box">

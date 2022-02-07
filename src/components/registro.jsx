@@ -5,7 +5,7 @@ import Footer from "./footer.jsx"
 import { Link } from "react-router-dom"
 import {useState} from 'react'
 
-export default function (){
+export default function Registro(){
 
     const [user, setUser] = useState({
         nombre_usuario: '',
@@ -14,13 +14,14 @@ export default function (){
         nombre: '',
         apellido: '',
         edad: '',
-        sexo: 'M',
-        id_ciudad: 1
+        sexo: '',
+        id_ciudad: '',
     });
 
     const handleSubmit = async function(e){
+        console.log(user);
         e.preventDefault();
-        const res = await fetch('http://localhost:5000/createUser', {
+        const res = await fetch('http://localhost:5000/post-user', {
             method: 'POST',
             body: JSON.stringify(user),
             headers: { "Content-Type": "application/json"}
@@ -29,7 +30,7 @@ export default function (){
     };
 
     const handleChange = function(e){
-        setUser({...user, [e.target.name]: e.target.value});
+        setUser({...user, [e.target.name]: e.currentTarget.value});
     };
 
     return (
@@ -40,49 +41,54 @@ export default function (){
             <div className="formulario">
                 <h2>Registro</h2>
                 <p>Para continuar con la cotización rellena tus datos para el registro</p>
-                <form onSubmit={handleSubmit} className="list" onChange={handleChange}>
+                <form className="list">
                     <div className="form-content">
                         <label htmlFor="">Nombre Usuario</label>
-                        <input required id="usuario" type="text" name="nombre_usuario" placeholder="Usuario.."/>
+                        <input required id="usuario" type="text" onChange={handleChange} name="nombre_usuario" placeholder="Usuario.."/>
                     </div>
                     <div className="form-content">
                         <label htmlFor="">Correo</label>
-                        <input type="email" name="email" placeholder="Correo.."/>
+                        <input type="email" name="email" onChange={handleChange} placeholder="Correo.."/>
                     </div>
                     <div className="form-content">
                         <label htmlFor="">Contraseña</label>
-                        <input type="password" name="contrasena" placeholder="Contraseña.."/>
+                        <input type="password" name="contrasena" onChange={handleChange} placeholder="Contraseña.."/>
                     </div>
                     <div className="form-content">
                         <label htmlFor="">Nombre</label>
-                        <input type="text" name="nombre" placeholder="Nombre" />
+                        <input type="text" name="nombre" onChange={handleChange} placeholder="Nombre" />
                     </div>
                     <div className="form-content">
                         <label htmlFor="">Apellido</label>
-                        <input type="text" name="apellido" placeholder="Apellido" />
+                        <input type="text" name="apellido" onChange={handleChange} placeholder="Apellido" />
                     </div> 
                     <div className="form-content"> 
                         <label htmlFor="">Edad</label>
-                        <input type="text" name="edad" placeholder="Edad" />
+                        <input type="text" name="edad" onChange={handleChange} placeholder="Edad" />
                     </div>
                     <div className="form-content">
                         <label htmlFor="">Sexo</label>
-                        <select id="" >
-                            <option name="sexo" value="M" selected>M</option>
-                            <option name="sexo" value="F">F</option>
-                            <option name="sexo" value="N/A">N/A</option>
+                        <select name="sexo" id="" onChange={handleChange}>
+                            <option value="?">Seleccionar</option>
+                            <option value="M">M</option>
+                            <option value="F">F</option>
                         </select>
                     </div>
                     <div className="form-content">
                         <label htmlFor="ciudad">Ciudad</label>
-                        <select id="ciudad" name="id_ciudad">
-                            <option value="caracas">Caracas</option>
-                            <option value="valencia">Valencia</option>
+                        <select id="ciudad" name="id_ciudad" onChange={handleChange}>
+                            <option value="?">Seleccionar</option>
+                            <option value="1">Caracas</option>
+                            <option value="2">Valencia</option>
+                            <option value="3">Maracaibo</option>
+                            <option value="4">Barquisimeto</option>
+                            <option value="5">Barcelona</option>
+                            <option value="6">Merida</option>
                         </select>
                     </div>
                     <div className="form-content-2">
                         <Link to={'/cotizacion'}>
-                            <button type="submit" className="button">Registrar</button>
+                            <button type="submit" onClick={handleSubmit} className="button">Registrar</button>
                         </Link>
                     </div>
                 </form>

@@ -87,7 +87,7 @@ const Servicios = () => {
                         </div>
                         <div className="cotizar">
                             <h4>Cotiza con Nosotros</h4>
-                            <a href={"/poliza"} className="button">
+                            <a href={"/registro"} className="button">
                                 Cotizar
                             </a>
                         </div>
