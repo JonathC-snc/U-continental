@@ -48,7 +48,7 @@ const cotizacion_resultado = () => {
                 <div className="button-resultado">
                     <p>Si está deacuerdo presione <span>ACEPTAR</span>, de lo contrario presione <span>ATRÁS</span> y vuelva rellenar los datos</p>
                     <div className='btn-r'>
-                        <Link to={"/poliza"}>
+                        <Link to={"/cotizacion"}>
                             <button className='button'>Atras</button>
                         </Link>
                         <Link to={"/contrato"}>

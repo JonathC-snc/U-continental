@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './header2';
 import Footer from './footer';
-//import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +9,7 @@ const Siniestro = () => {
     const navigate = useNavigate();
 
     const [sini, setSini] = useState ({
-        descripcion: "",
+        descp_siniestro: "",
     });
 
     const [acc, setAcc] = useState ({
@@ -20,8 +19,8 @@ const Siniestro = () => {
     });
 
     const [cat, setCat] = useState ({
-        tipo_acc: "",
-        descp_acc: "",
+        descrip_cat: "",
+        descrip_subcateg: "",
     })
  
     
@@ -37,32 +36,19 @@ const Siniestro = () => {
         setCat({...cat, [e.target.name]: e.currentTarget.value});
     }
     
-    const handleSubmit = async function(e){
+    const handleSubmit = async (e) => {
 
         e.preventDefault();
-        console.log(sini);
-        const sin = await fetch("http://localhost:5000/post-crearSiniestro", {
+        const res = await fetch("http://localhost:5000/post-crearSiniestro", {
             method: "POST",
             body: JSON.stringify(sini),
-            headers: { "Content-Type": "application/json"}
-            
-        });
-        const sinis = await sin.json();
+            headers: { "Content-Type": "application/json"},   
+            });
 
-        const acci = await fetch("http://localhost:5000/post-crearAccidente", {
-            method: "POST",
-            body: JSON.stringify(acc),
-            headers: { "Content-Type": "application/json"}
+        const data = await res.json();
+        console.log(data);
 
-        });
-
-        const cate = await fetch("http://localhost:5000/post-crearCategoria", {
-            method: "POST",
-            body: JSON.stringify(cat),
-            headers: { "Content-Type": "application/json"}
-
-        });
-        navigate('/portal');
+        navigate('/portal')
 
     }
     /*const subAcc = (e) => {
@@ -87,10 +73,10 @@ const Siniestro = () => {
             <div className='form-poliza'>
                 <h4>Registro de Siniestros</h4>
                 <div className='formulario'>
-                    <form action="" className='list'>
+                    <form onSubmit={handleSubmit} className='list'>
                         <div className='form-content'>
                             <label htmlFor="">Descripción</label>
-                            <textarea name="descripcion" onChange={handleSiniestro} id="" cols="30" rows="10"></textarea>
+                            <textarea name="descp_siniestro" onChange={handleSiniestro} id="" cols="30" rows="10"></textarea>
                         </div>
                         <div className='form-content'>
                             <label htmlFor="">Fecha de Accidente</label>
@@ -106,7 +92,7 @@ const Siniestro = () => {
                         </div>
                         <div className='form-content'>
                             <label htmlFor="">Tipo de Accidente</label>
-                            <select name="tipo_acc" onChange={handleCategoria} id="">
+                            <select name="descrip_cat" onChange={handleCategoria} id="">
                                 <option value="?">Seleccionar</option>
                                 <option value="Accidentes en el hogar">Accidentes en el hogar</option>
                                 <option value="Accidentes en el trabajo">Accidentes en el trabajo</option>
@@ -121,12 +107,10 @@ const Siniestro = () => {
                         </div>
                         <div className='form-content'>
                             <label htmlFor="">Descripcion de Accidente</label>
-                            <input name="descp_acc" onChange={handleCategoria} type="text" />
+                            <input name="descrip_subcateg" onChange={handleCategoria} type="text" />
                         </div>
                         <div className='form-content btn-poliza'>
-                            
-                                <button type="submit" onClick={handleSubmit} className="button">Enviar</button>
-                            
+                            <button type="submit"  className="button">Enviar</button>
                         </div>
                     </form>
                 </div>
