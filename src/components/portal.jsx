@@ -3,10 +3,40 @@ import Header from "./header2"
 import logo from "../assets/img/logo.svg"
 import Item from "./item_poliza"
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 export default function Portal() {
 
     const navigate = useNavigate();
+
+    const [poliza, setPoliza] = useState([]);
+    const [siniestro, setRsiniestro] = useState([]);
+
+    /*const siniestro = async (e) => {
+        const respuesta = await fetch(`http://localhost:5000/siniestro`)
+        const data = await respuesta.json();
+        setSiniestro(data)
+    }*/
+
+    const poli = async (e) => {
+        const res = await fetch('http://localhost:5000/poliza')
+        const datap = await res.json()
+        setPoliza(datap)
+    }
+
+    const sini = async (e) => {
+        const res = await fetch('http://localhost:5000/rsiniestro')
+        const datas = await res.json()
+        setRsiniestro(datas)
+    }
+    
+    useEffect(() => {
+        poli()
+    }, [])
+
+    useEffect(() => {
+        sini()
+    }, [])
 
     const handleExit = (e) => {
         alert('Hasta Luego!');
@@ -51,7 +81,16 @@ export default function Portal() {
                     </div>
                     <div className="table-portal">
                         {/*<h2>Tus Polizas apareceran aqui</h2>*/}
-                        <Item />    
+                        {
+                            poliza.map((poliza, siniestro) => (
+                                <Item 
+                                    numero={poliza.nro_poliza}
+                                    descripcion={poliza.descrip_poliza}
+                                    prima={poliza.prima}
+                                    fecha_resp={siniestro.fecha_resp}
+                                />
+                            ))
+                        }    
                     </div>
                 </div>
             </div>

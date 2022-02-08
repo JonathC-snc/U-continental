@@ -1,16 +1,31 @@
 import React from 'react';
 import Header from './header2';
 import Footer from './footer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const Siniestro = () => {
 
     const navigate = useNavigate();
 
+    const [poli, setPoli] = useState ({
+        nro_poliza: ""
+    })
+
     const [sini, setSini] = useState ({
         descp_siniestro: "",
     });
+
+    const [rsini, setRsini] = useState ({
+        nro_siniestro: 20,
+        nro_poliza: poli.nro_poliza,
+        fecha_siniestro: "",
+        fecha_resp: "2022-02-11",
+        rechazo: "NO",
+        monto_reconocido: 5000,
+        monto_solicitado: "",
+
+    })
 
     const [acc, setAcc] = useState ({
         fecha_acc: "",
@@ -22,33 +37,49 @@ const Siniestro = () => {
         descrip_cat: "",
         descrip_subcateg: "",
     })
- 
-    
-    const handleAccidente = (e) => {
-        setAcc({...acc, [e.target.name]: e.currentTarget.value});
-    }
 
-    const handleSiniestro = (e) => {
-        setSini({...sini, [e.target.name]: e.currentTarget.value});
+    const handleRsiniestro = (e) => {
+        setRsini({...rsini, [e.target.name]: e.currentTarget.value});
     }
     
-    const handleCategoria = (e) => {
-        setCat({...cat, [e.target.name]: e.currentTarget.value});
+    /*const handleAccidente = (e) => {
+        setAcc({...acc, [e.target.name]: e.currentTarget.value});
+    }*/
+    
+    const handleSiniestro = async (e) => {
+        setSini({...sini, [e.target.name]: e.currentTarget.value});
+        const res = await fetch(`http://localhost:5000/poliza/${rsini.nro_poliza}`)
+        const datap = await res.json()
+        setPoli(datap)
+
     }
+    
+    /*const handleCategoria = (e) => {
+        setCat({...cat, [e.target.name]: e.currentTarget.value});
+    }*/
     
     const handleSubmit = async (e) => {
-
         e.preventDefault();
-        const res = await fetch("http://localhost:5000/post-crearSiniestro", {
-            method: "POST",
-            body: JSON.stringify(sini),
-            headers: { "Content-Type": "application/json"},   
-            });
+        console.log(poli);
+        console.log(rsini);
+        if (poli.nro_poliza === rsini.nro_poliza){
+            console.log(rsini);
+            await fetch('http://localhost:5000/post-crearSiniestro', {
+                method: "POST",
+                body: JSON.stringify(sini),
+                headers: { "Content-Type": "application/json"},   
+                });
 
-        const data = await res.json();
-        console.log(data);
-
-        navigate('/portal')
+            await fetch('http://localhost:5000/post-registrarSiniestro', {
+                method: "POST",
+                body: JSON.stringify(rsini),
+                headers: { "Content-Type": "aplication/json"},
+            })    
+    
+            navigate('/portal')
+        }else{
+            alert('error, poliza no encontrada')
+        }
 
     }
     /*const subAcc = (e) => {
@@ -75,10 +106,22 @@ const Siniestro = () => {
                 <div className='formulario'>
                     <form onSubmit={handleSubmit} className='list'>
                         <div className='form-content'>
+                            <label htmlFor="">Nro de poliza</label>
+                            <input type="text" name='nro_poliza' onChange={handleRsiniestro}/>
+                        </div>
+                        <div className='form-content'>
                             <label htmlFor="">Descripción</label>
                             <textarea name="descp_siniestro" onChange={handleSiniestro} id="" cols="30" rows="10"></textarea>
                         </div>
                         <div className='form-content'>
+                            <label htmlFor="">Fecha del Siniestro</label>
+                            <input type="text" name='fecha_siniestro' onChange={handleRsiniestro} />
+                        </div>
+                        <div className='form-content'>
+                            <label htmlFor="">Monto Solicitado</label>
+                            <input type="text" name='monto_solicitado' onChange={handleRsiniestro}/>
+                        </div>
+                        {/*<div className='form-content'>
                             <label htmlFor="">Fecha de Accidente</label>
                             <input name="fecha_acc" onChange={handleAccidente} type="text" placeholder='AA-MM-DD...' />
                         </div>
@@ -108,7 +151,7 @@ const Siniestro = () => {
                         <div className='form-content'>
                             <label htmlFor="">Descripcion de Accidente</label>
                             <input name="descrip_subcateg" onChange={handleCategoria} type="text" />
-                        </div>
+  </div>*/}
                         <div className='form-content btn-poliza'>
                             <button type="submit"  className="button">Enviar</button>
                         </div>
