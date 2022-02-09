@@ -10,6 +10,7 @@ import Servicios from "./components/servicios";
 import Serv from "./components/servicio";
 import Error404 from "./components/error_404";
 import Sesion from "./components/sesion";
+import Psiniestros from "./components/psiniestros";
 import Siniestro from "./components/siniestro";
 import Rsiniestro from "./components/Registro_siniestro"
 import Cotizacion from "./components/cotizacion";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/servicio" element={<Serv />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/resulsiniestro" element={<Rsiniestro />} />
+            <Route path="/psiniestro" element={<Psiniestros />} />
             <Route path="/siniestro" element={<Siniestro />} />
             <Route path="/portal" element={<Portal />} />
             <Route path="/sesion" element={<Sesion />} />

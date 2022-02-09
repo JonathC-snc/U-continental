@@ -21,7 +21,7 @@ const Siniestro = () => {
     });
 
     const [rsini, setRsini] = useState ({
-        nro_siniestro: 50,
+        nro_siniestro: 2,
         nro_poliza: "",
         fecha_siniestro: "",
         fecha_resp: "2022-02-11",
@@ -76,9 +76,10 @@ const Siniestro = () => {
         console.log(rsini.nro_poliza);
         const res = await fetch(`http://localhost:5000/poliza/${rsini.nro_poliza}`);
         const data = await res.json();
-        setPoli({nro_poli: data.nro_poliza});
-        console.log(poli.nro_poli);
-
+        const poliz = data[0].nro_poliza;
+        console.log(poliz);
+        console.log(data);
+        if (poliz === rsini.nro_poliza){
             await fetch('http://localhost:5000/post-crearSiniestro', {
                 method: "POST",
                 body: JSON.stringify(sini),
@@ -89,9 +90,12 @@ const Siniestro = () => {
                 method: "POST",
                 body: JSON.stringify(rsini),
                 headers: { "Content-Type": "aplication/json"},
-            })    
-            navigate('/portal')
-
+            }) 
+            alert('Registro añadido exitosamente')   
+            navigate('/psiniestro')
+        }else{
+            alert('Error')
+        }
 
     }
     /*const subAcc = (e) => {
