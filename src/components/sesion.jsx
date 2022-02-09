@@ -6,31 +6,55 @@ import {useNavigate} from 'react-router-dom'
 
 const Sesion = () => {
 
-    const [usuario, setUsuario] = useState({
-        correo: 'jonacris2007@gmail.com',
-        password: 'cristo',
-    })
+    // const [usuario, setUsuario] = useState({
+    //     correo: 'jonacris2007@gmail.com',
+    //     password: 'cristo',
+    // })
 
-    const [login, setLogin] = useState({
+    /*const [login, setLogin] = useState({
         correo: '',
         password: '',
-    })
+    })*/
+
+    const [user, setUser] = useState({
+        email: "",
+        contrasena: "",
+    });
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(login);
+    //     if((login.correo === usuario.correo) && (login.password === usuario.password)){
+    //         navigate('/portal')
+    //     }else{
+    //         alert('Error de sesion');
+    //     }
+    // };
+
+    const handleSubmit = async function(e){
         e.preventDefault();
-        console.log(login);
-        if((login.correo === usuario.correo) && (login.password === usuario.password)){
-            navigate('/portal')
-        }else{
-            alert('Error de sesion');
+        console.log(user.email, user.contrasena);
+        const response = await fetch("http://localhost:5000/get-credentials/" + user.email + "/" + user.contrasena, {
+            method: "GET",
+            headers: { 
+                Accept: "application/json",
+                "Content-Type": "application/json" },
+        });
+        if (response.status === 404)
+            alert('User couldnt be found');
+        else{
+            const data = await response.json();
+            const id_usuario = data[0].id_usuario;
+            console.log(id_usuario);
+            navigate("/portal/" + id_usuario);
         }
-    };
+    }
 
-    const handleChange = (e) => 
-        setLogin({ ...login, [e.target.name]: e.target.value});
-
+    const handleChange = function(e){
+        setUser({...user, [e.target.name]: e.target.value});
+    }
 
     return (
     <div>
@@ -44,9 +68,9 @@ const Sesion = () => {
                     </div>
                     <div className="form-content-3">
                         <label htmlFor="">Correo</label>
-                        <input name="correo" onChange={handleChange} type="text" placeholder="Correo.." />
+                        <input name="correo" onChange={handleChange} type="text" name="email" placeholder="Correo.." />
                         <label htmlFor="">Contraseña</label>
-                        <input name="password" onChange={handleChange} type="password" id="" placeholder="Contraseña.." />
+                        <input name="password" onChange={handleChange} type="password" id="" name="contrasena" placeholder="Contraseña.." />
                         
                     </div>
                     <div className="button-sesion">

@@ -26,8 +26,8 @@ function App() {
             <Route path="/servicio" element={<Serv />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/resulsiniestro" element={<Rsiniestro />} />
-            <Route path="/siniestro" element={<Siniestro />} />
-            <Route path="/portal" element={<Portal />} />
+            <Route path="/siniestro/:id" element={<Siniestro />} />
+            <Route path="/portal/:id" element={<Portal />} />
             <Route path="/sesion" element={<Sesion />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/contrato" element={<Contrato />} />

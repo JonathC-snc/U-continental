@@ -8,20 +8,20 @@ const Siniestro = () => {
 
     const navigate = useNavigate();
 
-    const params = useParams();
-
     const [poli, setPoli] = useState ([]);
 
     const [poliza, setPoliza] = useState ({
         nro_poliza: poli,
     })
 
+    const id_usuario = useParams().id;
+
     const [sini, setSini] = useState ({
         descp_siniestro: "",
     });
 
     const [rsini, setRsini] = useState ({
-        nro_siniestro: 50,
+        nro_siniestro: 2,
         nro_poliza: "",
         fecha_siniestro: "",
         fecha_resp: "2022-02-11",
@@ -64,10 +64,6 @@ const Siniestro = () => {
     /*const handleCategoria = (e) => {
         setCat({...cat, [e.target.name]: e.currentTarget.value});
     }*/
-
-
-
-    
     
     
     const handleSubmit = async (e) => {
@@ -90,7 +86,7 @@ const Siniestro = () => {
                 body: JSON.stringify(rsini),
                 headers: { "Content-Type": "aplication/json"},
             })    
-            navigate('/portal')
+            navigate('/portal/' + id_usuario);
 
 
     }

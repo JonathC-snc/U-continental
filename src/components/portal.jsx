@@ -3,7 +3,7 @@ import Header from "./header2"
 import logo from "../assets/img/logo.svg"
 import Item from "./item_poliza"
 import Itemsi from "./item_siniestro"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 export default function Portal() {
@@ -18,6 +18,8 @@ export default function Portal() {
         const data = await respuesta.json();
         setSiniestro(data)
     }*/
+
+    const id_usuario = useParams().id;
 
     const poli = async (e) => {
         const res = await fetch('http://localhost:5000/poliza');
@@ -47,7 +49,7 @@ export default function Portal() {
     }
 
     const handleSinister = (e) => {
-        navigate('/siniestro');
+        navigate('/siniestro/' + id_usuario);
     }
 
     const handleCotizacion = (e) => {
