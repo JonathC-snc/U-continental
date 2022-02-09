@@ -17,18 +17,18 @@ const Siniestro = () => {
     const id_usuario = useParams().id;
 
     const [sini, setSini] = useState ({
+        nro_siniestro: "",
         descp_siniestro: "",
     });
 
     const [rsini, setRsini] = useState ({
-        nro_siniestro: 2,
+        nro_siniestro: "",
         nro_poliza: "",
         fecha_siniestro: "",
         fecha_resp: "2022-02-11",
         rechazo: "NO",
-        monto_reconocido: 5000,
+        monto_reconocido: "",
         monto_solicitado: "",
-
     })
 
     const [acc, setAcc] = useState ({
@@ -44,8 +44,7 @@ const Siniestro = () => {
 
     
     const handleRsiniestro = async (e) => {
-        setRsini({...rsini, [e.target.name]: e.currentTarget.value});
-        
+        setRsini({...rsini, [e.target.name]: e.currentTarget.value}); 
     }
     
 /*    const handlePoliza =  (e) => {
@@ -66,29 +65,32 @@ const Siniestro = () => {
     }*/
     
     
-    const handleSubmit = async (e) => {
-        
+    const handleSubmit = async (e) => {    
+        sini.nro_siniestro = Math.floor(Math.random() * (1000-20)+20);
+        rsini.nro_siniestro = sini.nro_siniestro;  
+        rsini.monto_reconocido = rsini.monto_solicitado * 1.2;
         e.preventDefault();
-        console.log(rsini.nro_poliza);
         const res = await fetch(`http://localhost:5000/poliza/${rsini.nro_poliza}`);
         const data = await res.json();
-        setPoli({nro_poli: data.nro_poliza});
-        console.log(poli.nro_poli);
-
+        const poliz = data[0].nro_poliza;
+        console.log(rsini);
+        if (poliz === rsini.nro_poliza){
             await fetch('http://localhost:5000/post-crearSiniestro', {
                 method: "POST",
                 body: JSON.stringify(sini),
                 headers: { "Content-Type": "application/json"},   
                 });
-
             await fetch('http://localhost:5000/post-registrarSiniestro', {
                 method: "POST",
                 body: JSON.stringify(rsini),
-                headers: { "Content-Type": "aplication/json"},
-            })    
-            navigate('/portal/' + id_usuario);
-
-
+                headers: { "Content-Type": "application/json"},   
+            });
+            //navigate('/portal/' + id_usuario);
+            alert('Registro añadido exitosamente')   
+            navigate('/psiniestro/' + id_usuario)
+        }else{
+            alert('Error')
+        }   
     }
     /*const subAcc = (e) => {
         if (acc.tipo_acc === '1'){
