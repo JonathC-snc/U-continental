@@ -2,14 +2,18 @@ import React from 'react';
 import Header from './header2';
 import Footer from './footer';
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Siniestro = () => {
 
     const navigate = useNavigate();
 
-    const [poli, setPoli] = useState ({
-        nro_poliza: ""
+    const params = useParams();
+
+    const [poli, setPoli] = useState ([]);
+
+    const [poliza, setPoliza] = useState ({
+        nro_poliza: poli,
     })
 
     const [sini, setSini] = useState ({
@@ -17,8 +21,8 @@ const Siniestro = () => {
     });
 
     const [rsini, setRsini] = useState ({
-        nro_siniestro: 20,
-        nro_poliza: poli.nro_poliza,
+        nro_siniestro: 50,
+        nro_poliza: "",
         fecha_siniestro: "",
         fecha_resp: "2022-02-11",
         rechazo: "NO",
@@ -38,32 +42,43 @@ const Siniestro = () => {
         descrip_subcateg: "",
     })
 
-    const handleRsiniestro = (e) => {
+    
+    const handleRsiniestro = async (e) => {
         setRsini({...rsini, [e.target.name]: e.currentTarget.value});
+        
     }
+    
+/*    const handlePoliza =  (e) => {
+        setPoliza({...poliza, [e.target.name]: e.currentTarget.value});
+    }*/
     
     /*const handleAccidente = (e) => {
         setAcc({...acc, [e.target.name]: e.currentTarget.value});
     }*/
     
-    const handleSiniestro = async (e) => {
+    const handleSiniestro = (e) => {
         setSini({...sini, [e.target.name]: e.currentTarget.value});
-        const res = await fetch(`http://localhost:5000/poliza/${rsini.nro_poliza}`)
-        const datap = await res.json()
-        setPoli(datap)
-
+        
     }
     
     /*const handleCategoria = (e) => {
         setCat({...cat, [e.target.name]: e.currentTarget.value});
     }*/
+
+
+
+    
+    
     
     const handleSubmit = async (e) => {
+        
         e.preventDefault();
-        console.log(poli);
-        console.log(rsini);
-        if (poli.nro_poliza === rsini.nro_poliza){
-            console.log(rsini);
+        console.log(rsini.nro_poliza);
+        const res = await fetch(`http://localhost:5000/poliza/${rsini.nro_poliza}`);
+        const data = await res.json();
+        setPoli({nro_poli: data.nro_poliza});
+        console.log(poli.nro_poli);
+
             await fetch('http://localhost:5000/post-crearSiniestro', {
                 method: "POST",
                 body: JSON.stringify(sini),
@@ -75,11 +90,8 @@ const Siniestro = () => {
                 body: JSON.stringify(rsini),
                 headers: { "Content-Type": "aplication/json"},
             })    
-    
             navigate('/portal')
-        }else{
-            alert('error, poliza no encontrada')
-        }
+
 
     }
     /*const subAcc = (e) => {
@@ -108,6 +120,7 @@ const Siniestro = () => {
                         <div className='form-content'>
                             <label htmlFor="">Nro de poliza</label>
                             <input type="text" name='nro_poliza' onChange={handleRsiniestro}/>
+                            
                         </div>
                         <div className='form-content'>
                             <label htmlFor="">Descripción</label>

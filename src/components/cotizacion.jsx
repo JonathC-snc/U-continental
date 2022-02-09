@@ -120,30 +120,30 @@ const Cotizacion = () => {
         }
     }
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async function(e){
         e.preventDefault();
-        const res = await fetch("http://localhost:5000/post-crearpersona", {
+        await fetch("http://localhost:5000/post-crearpersona", {
             method: "POST",
             body: JSON.stringify(perso),
             headers: { "Content-Type": "application/json"}
         });
 
-        const pol = await fetch("http://localhost:5000/post-Poliza", {
+        await fetch("http://localhost:5000/post-Poliza", {
             method: "POST",
             body: JSON.stringify(poli),
             headers: { "Content-Type": "application/json"}
         });
 
-        if (perso.tipo_persona === '4'){
-            const cli = await fetch("http://localhost:5000/post-crearCliente", {
+        
+            await fetch("http://localhost:5000/post-crearCliente", {
                 method: "POST",
                 body: JSON.stringify(cliente),
                 headers: { "Content-Type": "application/json"}
             });
-            const clie = await cli.json();
-        }
+            
+        
 
-        await fetch("http://localhost:5000/post-crearauto", {
+        await fetch('http://localhost:5000/post-crearauto', {
             method: "POST",
             body: JSON.stringify(veh),
             headers: { "Content-Type": "application/json"}
@@ -151,7 +151,7 @@ const Cotizacion = () => {
 
 
 
-        await fetch("http://localhost:5000/post-crearvida", {
+        await fetch('http://localhost:5000/post-crearvida', {
             method: "POST",
             body: JSON.stringify(vid),
             headers: { "Content-Type": "application/json"}
