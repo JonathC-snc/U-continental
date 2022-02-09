@@ -10,7 +10,7 @@ const Siniestro = () => {
     const navigate = useNavigate();
 
     const [sini, setSini] = useState ({
-        descripcion: "",
+        descp_siniestro: "",
     });
 
     const [acc, setAcc] = useState ({
