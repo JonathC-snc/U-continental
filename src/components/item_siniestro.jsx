@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const item_poliza = ({numero, descripcion, prima, fecha_resp}) => {
+const Item_siniestro = ({nro_siniestro, nro_poliza, fecha_siniestro, fecha_resp, rechazo, monto_reconocido, monto_solicitado}) => {
     return (
         <div className='item'>
             <div className='icon-item'>
@@ -8,23 +8,22 @@ const item_poliza = ({numero, descripcion, prima, fecha_resp}) => {
             </div>
             <div className='administrator'>
                 <div className='details-item'>
-                    <h4>Nro. Poliza: <span> {numero}</span></h4>
-                    <p>Descripcion: <span> {descripcion}</span></p>
-                    <p>Prima: <span>{prima}</span></p>
+                    <h4>Nro. Siniestro: <span> {nro_siniestro}</span></h4>
+                    <p>Nro. Poliza: <span> {nro_poliza}</span></p>
+                    <p>Fecha de Respuesta: <span>{fecha_resp}</span></p>
+                    <p>Monto Solicitado: <span>{monto_solicitado}</span></p>
                 </div>
-                <div className='btns-administrator'>
+               {/* <div className='btns-administrator'>
                     <button className='btn'>
                         <i className="fas fa-edit btn-icon"></i>
                     </button>
                     <button className='btn'>
                         <i className="fas fa-trash-alt btn-icon"></i>
                     </button>
-                </div>
+    </div>*/}
             </div>
         </div>
     )
-}
+};
 
-
-export default item_poliza
-
+export default Item_siniestro;

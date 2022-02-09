@@ -8,9 +8,11 @@ import Formhog from './form_hogar';
 import Cliente from './cliente';
 //import Error_404 from './error_404';
 import banner from '../assets/img/cotizacion_images.gif';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Cotizacion = () => {
+
+    const navigate = useNavigate()
 
     const [perso, setPerso] = useState({
         ci: "",
@@ -118,89 +120,52 @@ const Cotizacion = () => {
         }
     }
 
-    const bandera = async function(e) {
-        if (poli.tipo === '3'){
-            const vehi = await fetch("http://localhost:5000/post-crearauto", {
-                method: "POST",
-                body: JSON.stringify(veh),
-                headers: { "Content-Type": "application/json"}
-            });
-            const auto = await vehi.json();
-        }else{
-            if(poli.tipo === '1'){
-                const vida = await fetch("http://localhost:5000/post-crearvida", {
-                    method: "POST",
-                    body: JSON.stringify(vid),
-                    headers: { "Content-Type": "application/json"}
-                });
-                const life = await vida.json();
-            }else{
-                if(poli.tipo === '2'){
-                    const hoga = await fetch("http://localhost:5000/post-crearinmueble", {
-                        method: "POST",
-                        body: JSON.stringify(hog),
-                        headers: { "Content-Type": "application/json"}
-                    });
-                    const hou = await hoga.json();
-                }
-            }
-        }
-    }
-
     const handleSubmit = async function(e){
         e.preventDefault();
-        console.log(cliente);
-        const res = await fetch("http://localhost:5000/post-crearpersona", {
+        await fetch("http://localhost:5000/post-crearpersona", {
             method: "POST",
             body: JSON.stringify(perso),
             headers: { "Content-Type": "application/json"}
-
         });
 
-        const pol = await fetch("http://localhost:5000/post-Poliza", {
+        await fetch("http://localhost:5000/post-Poliza", {
             method: "POST",
             body: JSON.stringify(poli),
             headers: { "Content-Type": "application/json"}
         });
 
-        if (perso.tipo_persona === '4'){
-            const cli = await fetch("http://localhost:5000/post-crearCliente", {
+        
+            await fetch("http://localhost:5000/post-crearCliente", {
                 method: "POST",
                 body: JSON.stringify(cliente),
                 headers: { "Content-Type": "application/json"}
             });
-            const clie = await cli.json();
-        }
+            
+        
 
-        const vehi = await fetch("http://localhost:5000/post-crearauto", {
+        await fetch('http://localhost:5000/post-crearauto', {
             method: "POST",
             body: JSON.stringify(veh),
             headers: { "Content-Type": "application/json"}
         });
-        const auto = await vehi.json();
 
 
-            const vida = await fetch("http://localhost:5000/post-crearvida", {
-                method: "POST",
-                body: JSON.stringify(vid),
-                headers: { "Content-Type": "application/json"}
-            });
-            const life = await vida.json();
+
+        await fetch('http://localhost:5000/post-crearvida', {
+            method: "POST",
+            body: JSON.stringify(vid),
+            headers: { "Content-Type": "application/json"}
+        });
+
         
-            const hoga = await fetch("http://localhost:5000/post-crearinmueble", {
+        await fetch("http://localhost:5000/post-crearinmueble", {
                 method: "POST",
                 body: JSON.stringify(hog),
                 headers: { "Content-Type": "application/json"}
-            });
-            const hou = await hoga.json();
-        
+        });
 
-        const data = await res.json();
-        const poliza = await pol.json();
-        console.log(perso);
-        console.log(veh);
-        console.log(vid);
-        console.log(hog);
+        navigate('/cotizacion/:id')
+
     }
         return (
                     <div>
@@ -214,7 +179,7 @@ const Cotizacion = () => {
                             <div className='form-poliza'>
                                 <h4>Cotizacion de poliza</h4>
                                 <div className='formulario'>
-                                    <form action="" className='list'>
+                                    <form onSubmit={handleSubmit} className='list'>
                                         <div className='form-content'>
                                             <label htmlFor="">Cedula</label>
                                             <input name="ci" onChange={handlePerson} type="text" placeholder='Cedula' />
@@ -259,9 +224,9 @@ const Cotizacion = () => {
                                             {component}
                                         </div>
                                         <div className='form-content btn-poliza'>
-                                            <Link  to={"/cotizacion/1"}>
-                                                <button type='submit' onClick={handleSubmit} className='button'>Enviar</button>
-                                            </Link> 
+                                            
+                                                <button type='submit' className='button'>Enviar</button>
+                                            
                                         </div>
                                     </form>
                                 </div>

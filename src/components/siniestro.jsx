@@ -1,17 +1,35 @@
 import React from 'react';
 import Header from './header2';
 import Footer from './footer';
-//import { Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
 
 const Siniestro = () => {
 
     const navigate = useNavigate();
 
+    const params = useParams();
+
+    const [poli, setPoli] = useState ([]);
+
+    const [poliza, setPoliza] = useState ({
+        nro_poliza: poli,
+    })
+
     const [sini, setSini] = useState ({
         descp_siniestro: "",
     });
+
+    const [rsini, setRsini] = useState ({
+        nro_siniestro: 50,
+        nro_poliza: "",
+        fecha_siniestro: "",
+        fecha_resp: "2022-02-11",
+        rechazo: "NO",
+        monto_reconocido: 5000,
+        monto_solicitado: "",
+
+    })
 
     const [acc, setAcc] = useState ({
         fecha_acc: "",
@@ -20,49 +38,60 @@ const Siniestro = () => {
     });
 
     const [cat, setCat] = useState ({
-        tipo_acc: "",
-        descp_acc: "",
+        descrip_cat: "",
+        descrip_subcateg: "",
     })
- 
-    
-    const handleAccidente = (e) => {
-        setAcc({...acc, [e.target.name]: e.currentTarget.value});
-    }
 
+    
+    const handleRsiniestro = async (e) => {
+        setRsini({...rsini, [e.target.name]: e.currentTarget.value});
+        
+    }
+    
+/*    const handlePoliza =  (e) => {
+        setPoliza({...poliza, [e.target.name]: e.currentTarget.value});
+    }*/
+    
+    /*const handleAccidente = (e) => {
+        setAcc({...acc, [e.target.name]: e.currentTarget.value});
+    }*/
+    
     const handleSiniestro = (e) => {
         setSini({...sini, [e.target.name]: e.currentTarget.value});
+        
     }
     
-    const handleCategoria = (e) => {
+    /*const handleCategoria = (e) => {
         setCat({...cat, [e.target.name]: e.currentTarget.value});
-    }
+    }*/
+
+
+
     
-    const handleSubmit = async function(e){
-
+    
+    
+    const handleSubmit = async (e) => {
+        
         e.preventDefault();
-        console.log(sini);
-        const sin = await fetch("http://localhost:5000/post-crearSiniestro", {
-            method: "POST",
-            body: JSON.stringify(sini),
-            headers: { "Content-Type": "application/json"}
-            
-        });
-        const sinis = await sin.json();
+        console.log(rsini.nro_poliza);
+        const res = await fetch(`http://localhost:5000/poliza/${rsini.nro_poliza}`);
+        const data = await res.json();
+        setPoli({nro_poli: data.nro_poliza});
+        console.log(poli.nro_poli);
 
-        const acci = await fetch("http://localhost:5000/post-crearAccidente", {
-            method: "POST",
-            body: JSON.stringify(acc),
-            headers: { "Content-Type": "application/json"}
+            await fetch('http://localhost:5000/post-crearSiniestro', {
+                method: "POST",
+                body: JSON.stringify(sini),
+                headers: { "Content-Type": "application/json"},   
+                });
 
-        });
+            await fetch('http://localhost:5000/post-registrarSiniestro', {
+                method: "POST",
+                body: JSON.stringify(rsini),
+                headers: { "Content-Type": "aplication/json"},
+            })    
+            navigate('/portal')
 
-        const cate = await fetch("http://localhost:5000/post-crearCategoria", {
-            method: "POST",
-            body: JSON.stringify(cat),
-            headers: { "Content-Type": "application/json"}
-
-        });
-        navigate('/portal');
 
     }
     /*const subAcc = (e) => {
@@ -87,12 +116,25 @@ const Siniestro = () => {
             <div className='form-poliza'>
                 <h4>Registro de Siniestros</h4>
                 <div className='formulario'>
-                    <form action="" className='list'>
+                    <form onSubmit={handleSubmit} className='list'>
                         <div className='form-content'>
-                            <label htmlFor="">Descripción</label>
-                            <textarea name="descripcion" onChange={handleSiniestro} id="" cols="30" rows="10"></textarea>
+                            <label htmlFor="">Nro de poliza</label>
+                            <input type="text" name='nro_poliza' onChange={handleRsiniestro}/>
+                            
                         </div>
                         <div className='form-content'>
+                            <label htmlFor="">Descripción</label>
+                            <textarea name="descp_siniestro" onChange={handleSiniestro} id="" cols="30" rows="10"></textarea>
+                        </div>
+                        <div className='form-content'>
+                            <label htmlFor="">Fecha del Siniestro</label>
+                            <input type="text" name='fecha_siniestro' onChange={handleRsiniestro} />
+                        </div>
+                        <div className='form-content'>
+                            <label htmlFor="">Monto Solicitado</label>
+                            <input type="text" name='monto_solicitado' onChange={handleRsiniestro}/>
+                        </div>
+                        {/*<div className='form-content'>
                             <label htmlFor="">Fecha de Accidente</label>
                             <input name="fecha_acc" onChange={handleAccidente} type="text" placeholder='AA-MM-DD...' />
                         </div>
@@ -106,7 +148,7 @@ const Siniestro = () => {
                         </div>
                         <div className='form-content'>
                             <label htmlFor="">Tipo de Accidente</label>
-                            <select name="tipo_acc" onChange={handleCategoria} id="">
+                            <select name="descrip_cat" onChange={handleCategoria} id="">
                                 <option value="?">Seleccionar</option>
                                 <option value="Accidentes en el hogar">Accidentes en el hogar</option>
                                 <option value="Accidentes en el trabajo">Accidentes en el trabajo</option>
@@ -121,12 +163,10 @@ const Siniestro = () => {
                         </div>
                         <div className='form-content'>
                             <label htmlFor="">Descripcion de Accidente</label>
-                            <input name="descp_acc" onChange={handleCategoria} type="text" />
-                        </div>
+                            <input name="descrip_subcateg" onChange={handleCategoria} type="text" />
+  </div>*/}
                         <div className='form-content btn-poliza'>
-                            
-                                <button type="submit" onClick={handleSubmit} className="button">Enviar</button>
-                            
+                            <button type="submit"  className="button">Enviar</button>
                         </div>
                     </form>
                 </div>
